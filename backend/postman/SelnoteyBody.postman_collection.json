@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Selderey Body API",
+    "description": "Коллекция запросов для тестирования REST API сайта Selderey Body (неделя 6 практики).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000/api" },
+    { "key": "token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Auth - Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Тест Клиент\",\n  \"email\": \"client@example.com\",\n  \"password\": \"StrongPass123\",\n  \"phone\": \"+77001234567\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Auth - Login (admin)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@seldereybody.kz\",\n  \"password\": \"StrongPass123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Auth - Me",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": "{{baseUrl}}/auth/me"
+      }
+    },
+    {
+      "name": "Trainers - List",
+      "request": { "method": "GET", "url": "{{baseUrl}}/trainers" }
+    },
+    {
+      "name": "Trainers - Create (admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{baseUrl}}/trainers",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Айгерим\",\n  \"role_title\": \"Йога\",\n  \"bio\": \"Описание тренера\",\n  \"experience_years\": \"2 года\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Trainings - List",
+      "request": { "method": "GET", "url": "{{baseUrl}}/trainings" }
+    },
+    {
+      "name": "Trainings - Filter by category",
+      "request": { "method": "GET", "url": "{{baseUrl}}/trainings?category=stretch" }
+    },
+    {
+      "name": "Schedule - List",
+      "request": { "method": "GET", "url": "{{baseUrl}}/schedule" }
+    },
+    {
+      "name": "Bookings - Create",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/bookings",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Анна\",\n  \"phone\": \"+77001234567\",\n  \"email\": \"anna@example.com\",\n  \"className\": \"Pilates\",\n  \"date\": \"2026-07-01\",\n  \"comment\": \"Первый раз\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Bookings - List (admin)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": "{{baseUrl}}/bookings"
+      }
+    },
+    {
+      "name": "Bookings - Update status (admin)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{baseUrl}}/bookings/1/status",
+        "body": { "mode": "raw", "raw": "{\n  \"status\": \"confirmed\"\n}" }
+      }
+    },
+    {
+      "name": "Subscriptions - List",
+      "request": { "method": "GET", "url": "{{baseUrl}}/subscriptions" }
+    }
+  ]
+}
