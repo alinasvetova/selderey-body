@@ -390,6 +390,21 @@ p{color:var(--gray-700);}
 .form-feedback.is-success{display:block;background:var(--green-100);color:var(--green-800,var(--green-700));}
 .form-feedback.is-error{display:block;background:#FBE7E7;color:#B23A3A;}
 
+/* ---------- Admin (страница заявок) ---------- */
+.admin-login{max-width:420px;margin-inline:auto;}
+.admin-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.admin-toolbar-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.admin-table-wrap{overflow-x:auto;border:1px solid var(--gray-200);border-radius:var(--radius-md);}
+.admin-table{width:100%;border-collapse:collapse;min-width:760px;font-size:.92rem;}
+.admin-table th,.admin-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--gray-200);white-space:nowrap;}
+.admin-table th{background:var(--green-50);color:var(--green-900);font-weight:700;}
+.admin-table tbody tr:last-child td{border-bottom:none;}
+.admin-table tbody tr:hover{background:var(--green-50);}
+.admin-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.8rem;font-weight:600;}
+.admin-badge--new{background:var(--green-100);color:var(--green-700);}
+.admin-badge--confirmed{background:var(--green-600);color:var(--white);}
+.admin-badge--cancelled{background:#FBE7E7;color:#B23A3A;}
+
 /* ---------- Contacts ---------- */
 .contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
 .contact-info{display:grid;gap:22px;}

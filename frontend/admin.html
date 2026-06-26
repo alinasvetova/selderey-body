@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Заявки — Selderey Body</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2216%22 fill=%22%232E8B57%22/></svg>">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">SB</span>
+      Selderey <span>Body</span>
+    </a>
+    <nav class="nav">
+      <span class="muted">Панель администратора</span>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-outline" id="logoutBtn" hidden>Выйти</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+
+      <div class="admin-login" id="loginView">
+        <h1>Вход для администратора</h1>
+        <p class="muted mt-8">Введите данные администратора, чтобы посмотреть заявки на запись.</p>
+        <form class="form-grid mt-24" id="loginForm" novalidate>
+          <div class="form-row" data-field="email">
+            <label for="adminEmail">Email</label>
+            <input type="email" id="adminEmail" name="email" placeholder="admin@seldereybody.kz" autocomplete="username">
+            <span class="error-text">Введите корректный email</span>
+          </div>
+          <div class="form-row" data-field="password">
+            <label for="adminPassword">Пароль</label>
+            <input type="password" id="adminPassword" name="password" placeholder="••••••••" autocomplete="current-password">
+            <span class="error-text">Введите пароль</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">Войти</button>
+          <div class="form-feedback" id="loginFeedback"></div>
+        </form>
+      </div>
+
+      <div class="admin-bookings" id="bookingsView" hidden>
+        <div class="admin-toolbar">
+          <h1>Заявки на запись</h1>
+          <div class="admin-toolbar-actions">
+            <button class="btn btn-outline" id="refreshBookings">Обновить</button>
+          </div>
+        </div>
+        <p class="muted mt-8" id="bookingsStatus">Загрузка…</p>
+        <div class="admin-table-wrap mt-24">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Email</th>
+                <th>Занятие</th>
+                <th>Дата занятия</th>
+                <th>Статус</th>
+                <th>Заявка создана</th>
+              </tr>
+            </thead>
+            <tbody id="bookingsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script>window.SB_API_BASE = "https://selderey-body-api.onrender.com/api";</script>
+<script src="js/admin.js"></script>
+</body>
+</html>
