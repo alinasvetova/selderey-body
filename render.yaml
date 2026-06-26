@@ -1,0 +1,35 @@
+# Конфигурация деплоя backend на Render.com (неделя 9 практики)
+# Render автоматически создаст web service + управляемую PostgreSQL базу.
+
+databases:
+  - name: selderey-body-db
+    plan: free
+    region: frankfurt
+
+services:
+  - type: web
+    name: selderey-body-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PGSSL
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: selderey-body-db
+          property: connectionString
+      - key: CLIENT_ORIGIN
+        value: https://selderey-body.vercel.app
